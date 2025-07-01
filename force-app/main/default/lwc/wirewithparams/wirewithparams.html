@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Wire Adapter for accoutn method comming from apex filter with type">
+
+        <div class="slds-m-around_medium">
+            <lightning-combobox 
+            name="accountType" 
+            label="Select Account Type" 
+            value={selectedtype} 
+            placeholder="Select Account Type" 
+            options={typeoptions} 
+            onchange={handleChange}>
+        </lightning-combobox>
+            <template if:true={filteredaccount.data}>
+                <template for:each={filteredaccount.data} for:item="acc">
+                    <div key={acc.Id} class="slds-m-around_medium">
+                        <p>Account Name: {acc.Name}</p>
+                        <p>Account Id: {acc.Id}</p>
+                        <p>Account Type: {acc.Type}</p>
+                        <p>Account Rating: {acc.Rating}</p>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

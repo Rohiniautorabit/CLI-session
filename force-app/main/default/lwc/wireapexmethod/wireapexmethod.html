@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Wire Adapter for accoutn method comming from apex">
+        <div class="slds-m-around_medium">
+            <template if:true={accountlwccheck.data}>
+                <template for:each={accountlwccheck.data} for:item="acc">
+                    <div key={acc.Id} class="slds-m-around_medium">
+                        <p>Account Name: {acc.Name}</p>
+                        <p>Account Id: {acc.Id}</p>
+                        <p>Account Type: {acc.Type}</p>
+                        <p>Account Rating: {acc.Rating}</p>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+    <lightning-card title="Wire Adapter Demo where account lsit ot modificed after getting the data">
+        <div class="slds-m-around_medium">
+            <template if:true={accountlist}>
+                <template for:each={accountlist} for:item="acc">
+                    <div key={acc.Id} class="slds-m-around_medium">
+                        <p>Account Name: {acc.Name}</p>
+                        <p>Account Id: {acc.Id}</p>
+                        <p>Account Type: {acc.newtype}</p>
+                        <p>Account Rating: {acc.Rating}</p>
+                    </div>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>
