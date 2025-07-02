@@ -11,5 +11,12 @@ public with sharing class accountlwc {
              List<Account> accounts = [SELECT Id, Name,Type,Rating FROM Account where Type=:type LIMIT 10];
              return accounts;
          }
+         @AuraEnabled(cacheable=true)
+         public static List<Account> searchaccount(string key) {
+            String type = '%' + key + '%';
+              List<Account> accounts = [SELECT Id, Name,Type,Rating FROM Account 
+              where Name LIKE :type LIMIT 10];
+              return accounts;
+          }
     
 }
