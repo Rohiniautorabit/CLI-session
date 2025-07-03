@@ -1,0 +1,20 @@
+<template>
+
+    <lightning-card  title="RefreshDemo">
+         
+        <div class="slds-m-around_medium">
+            <template if:true={contact.data}>
+                <lightning-datatable
+                key-field="id"
+                data={contact.data}
+                columns={columns}
+                draft-values={draftValues}
+                onsave={handleSave}>
+                </lightning-datatable>
+            </template>
+            
+        </div>
+    
+      </lightning-card>        
+    
+</template>
