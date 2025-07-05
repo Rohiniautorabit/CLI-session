@@ -1,0 +1,15 @@
+<template>
+    <div class="slds-p-around_medium">
+        <template if:true={mapmarkers.length}>
+            <lightning-map
+                map-markers={mapmarkers}
+                markers-title={markerstitle}
+                onmarkerselect={handleMarkerSelect}
+                selected-marker-value={selectedMarker}>
+            </lightning-map>
+        </template>
+        <template if:false={mapmarkers.length}>
+            <p>No Account found to disply the map.</p>
+        </template>     
+    </div>
+</template>
