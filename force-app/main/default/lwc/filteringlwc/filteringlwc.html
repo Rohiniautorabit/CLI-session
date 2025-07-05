@@ -9,6 +9,11 @@
                 <lightning-layout-item size="4" padding="around-small">
                     <lightning-input type="text" label="Filter" onkeyup={filterhandler}></lightning-input>
                 </lightning-layout-item>
+
+                <lightning-layout-item size="2" alignment-bump="left" padding="around-small">
+                    <lightning-combobox name="sortby" value={sortby} label="Sort By"
+                    options={sortoption} onchange={sorthandler}></lightning-combobox>
+                 </lightning-layout-item>
             </lightning-layout>
         <table>
            <thead>

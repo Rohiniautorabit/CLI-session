@@ -7,6 +7,9 @@ export default class filteringlwc extends LightningElement {
     filterby="Name"
     timer;
 
+    sortby="Name";
+    sortdirection="asc";
+
     @wire(getContacts)
     contactHandler({data,error}) {
         if (data) {
@@ -15,7 +18,9 @@ export default class filteringlwc extends LightningElement {
 
             console.log("contct data: "+JSON.stringify(data));
             this.fulldatatable = data;
-            this.filteredtable = data;
+            // on load only we are displauing sort data wiht name
+            
+            this.filteredtable = this.sortBy(data);
         } else if (error) {
             console.error(error);
         }
@@ -28,6 +33,15 @@ export default class filteringlwc extends LightningElement {
             {label:'Title', value:'Title'},
             {label:'Email', value:'Email'}
         ]
+}
+
+get sortoption(){
+    return [
+        {label:"Id", value:'Id'},
+        {label:'Name', value:'Name'},
+        {label:'Title', value:'Title'},
+        {label:'Email', value:'Email'}
+    ]
 }
 
     filterbyhandler(event){
@@ -58,5 +72,24 @@ export default class filteringlwc extends LightningElement {
             this.filteredtable = [...this.fulldatatable];
         }
         
+    }
+
+    sorthandler(event){
+        this.sortby = event.target.value;
+        this.filteredtable = this.sortBy(this.filteredtable); // Pass the filtered table for sorting
+
+    }
+    sortBy(data){
+        const copydata=[...data]
+        copydata.sort((a,b) => {
+            if(a[this.sortby] === b[this.sortby]){
+                return 0;
+            }
+            return this.sortdirection === 'desc' ?
+                a[this.sortby] > b[this.sortby] ? -1 : 1 :
+                a[this.sortby] < b[this.sortby] ? -1 : 1;
+
+        })
+        return copydata;
     }
 }
