@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="lwc:spread demo">
+        <div class="slds-p-around_medium">
+            <h1>I am parent</h1>
+            <!-- here we are pass user-name likt this to child as its original name is userName 
+             sicne n is caps befor that we are - as a kebab case 
+             alos lwc spread operator workd final , and its take the username form child props not this 
+             usernmae as rohini -->
+            <c-spreadoperatorchild lwc:spread={childProps} user-name="rohini"></c-spreadoperatorchild>
+        </div>
+        </lightning-card>
+</template>
